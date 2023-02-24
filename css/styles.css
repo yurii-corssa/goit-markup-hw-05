@@ -195,8 +195,19 @@ button {
   content: "";
   width: 100%;
   height: 4px;
+  animation: menu-link-underline var(--animation-dur-timing) 1;
   background-color: var(--pressed-state-color);
   border-radius: 2px;
+}
+
+@keyframes menu-link-underline {
+  from {
+    background-color: transparent;
+  }
+
+  to {
+    background-color: var(--pressed-state-color);
+  }
 }
 
 .address-link {
@@ -423,6 +434,61 @@ button {
 }
 
 /* =============== /FOOTER =============== */
+
+/* =============== MODAL WINDOW =============== */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(46, 47, 66, 0.4);
+  transform-origin: top;
+  transition: opacity var(--animation-dur-timing),
+    visibility var(--animation-dur-timing),
+    transform var(--animation-dur-timing);
+}
+
+.modal-backdrop.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: perspective(3000px) scale(1.1) rotateX(30deg);
+  pointer-events: none;
+}
+
+.modal-window {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 408px;
+  height: 576px;
+  transform: translate(-50%, -50%);
+  background-color: #fcfcfc;
+  border-radius: 4px;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.modal-close-button {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.modal-close-button-icon {
+  fill: #000000;
+}
+
+/* =============== /MODAL WINDOW =============== */
 
 /* =============== PORTFOLIO =============== */
 
